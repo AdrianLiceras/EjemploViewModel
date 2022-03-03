@@ -44,7 +44,7 @@ class MainActivityViewModel : ViewModel() {
                         println(e.toString())
                         CoroutineScope(Dispatchers.Main).launch {
                             delay(2000)
-                            setResponseTextInMainThread("Algo ha ido mal")
+                         //   setResponseTextInMainThread("Algo ha ido mal")
                             setIsVisibleInMainThread(false)
                         }
 
@@ -65,7 +65,7 @@ class MainActivityViewModel : ViewModel() {
                             CoroutineScope(Dispatchers.Main).launch {
                                 delay(2000)
                                 setIsVisibleInMainThread(false)
-                                setResponseTextInMainThread(planet.name)
+                                setResponseTextInMainThread(planet.toString())
 
                             }
                         }
@@ -93,7 +93,7 @@ class MainActivityViewModel : ViewModel() {
                         println(e.toString())
                         CoroutineScope(Dispatchers.Main).launch {
                             delay(2000)
-                            setResponseTextInMainThread("Algo ha ido mal")
+                          //  setResponseTextInMainThread("Algo ha ido mal")
                             setIsVisibleInMainThread(false)
                         }
 
@@ -113,9 +113,15 @@ class MainActivityViewModel : ViewModel() {
 
                             CoroutineScope(Dispatchers.Main).launch {
                                 delay(2000)
+                                var listaPlanet=""
+                                val noNull= planet.results.filter {
+                                    it.name.contains('t')
+                                }
 
+                                noNull.forEach {
+                                    listaPlanet+=it.name.toString() }
                                 setIsVisibleInMainThread(false)
-                                setResponseTextInMainThread("Hemos obtenido ${planet.count} planetas")
+                                setResponseTextInMainThread(listaPlanet)
                             }
                         }
                     }
